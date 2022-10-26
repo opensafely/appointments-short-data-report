@@ -90,12 +90,14 @@ check: devenv
     $BIN/black --check .
     $BIN/isort --check-only --diff .
     $BIN/flake8
+    $BIN/sqlfluff lint .
 
 
 # fix formatting and import sort ordering
 fix: devenv
     $BIN/black .
     $BIN/isort .
+    $BIN/sqlfluff fix .
 
 
 # Run the dev project

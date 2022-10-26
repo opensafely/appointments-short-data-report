@@ -13,3 +13,4 @@ isort
 pip-tools
 pytest
 pytest-cov
+sqlfluff
