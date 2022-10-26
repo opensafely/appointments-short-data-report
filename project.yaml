@@ -8,7 +8,6 @@ actions:
     run: >
       sqlrunner:latest
         --output output/rows.csv
-        --dummy-data-file input/rows.csv
         analysis/query.sql
     outputs:
       highly_sensitive:
