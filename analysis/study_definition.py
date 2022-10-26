@@ -1,4 +1,9 @@
-from cohortextractor import StudyDefinition, patients, codelist, codelist_from_csv  # NOQA
+from cohortextractor import (  # NOQA
+    StudyDefinition,
+    codelist,
+    codelist_from_csv,
+    patients,
+)
 
 
 study = StudyDefinition(
