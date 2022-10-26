@@ -4,20 +4,20 @@ tasks:
   - name: Install opensafely
     # prebuild, run in the background on every commit
     init: |
-        # install everything into a venv in /workspace, so it is persisted in the prebuild image
-        python -m venv /workspace/venv
-        # install opensafely
-        /workspace/venv/bin/pip install --progress-bar off opensafely
-        # ensure essential docker images are preloaded preloaded
-        /workspace/venv/bin/opensafely pull cohortextractor
+      # install everything into a venv in /workspace, so it is persisted in the prebuild image
+      python -m venv /workspace/venv
+      # install opensafely
+      /workspace/venv/bin/pip install --progress-bar off opensafely
+      # ensure essential docker images are preloaded preloaded
+      /workspace/venv/bin/opensafely pull cohortextractor
     # run everytime we start a workspace
     command: |
-        # limit action concurrency to as not to exhaust gitpod's RAM
-        export MAX_WORKERS=2
-        # add opensafely to the path
-        export PATH=/workspace/venv/bin:$PATH
-        opensafely upgrade
-        opensafely pull --project project.yaml
+      # limit action concurrency to as not to exhaust gitpod's RAM
+      export MAX_WORKERS=2
+      # add opensafely to the path
+      export PATH=/workspace/venv/bin:$PATH
+      opensafely upgrade
+      opensafely pull --project project.yaml
 github:
   prebuilds:
     # enable for the default branch (defaults to true)
