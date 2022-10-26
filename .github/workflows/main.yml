@@ -1,17 +1,35 @@
-name: Test that the project is runnable
+---
+name: CI
 
-on: [push, workflow_dispatch]
+on:
+  push:
+  workflow_dispatch:
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   DOCKER_RO_TOKEN: ${{ secrets.DOCKER_RO_TOKEN }}
   STATA_LICENSE: ${{ secrets.STATA_LICENSE }}
   HONEYCOMB_API_KEY: ${{ secrets.HONEYCOMB_API_KEY }}
+
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: requirements.*.txt
+      - uses: extractions/setup-just@v1
+      - name: Check formatting, linting and import sorting
+        run: just check
+
   test:
     runs-on: ubuntu-latest
     name: Test the project can run, using dummy data
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Test that the project is runnable
         uses: opensafely-core/research-action@v2
