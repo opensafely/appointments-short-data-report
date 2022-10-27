@@ -1,1 +1,5 @@
-SELECT 1 AS patient_id;
+SELECT
+    COUNT(DISTINCT Appointment_ID) AS num_distinct_values,
+    COUNT(Appointment_ID) AS num_values
+FROM
+    Appointment;
