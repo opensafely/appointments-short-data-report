@@ -12,3 +12,12 @@ actions:
     outputs:
       highly_sensitive:
         rows: output/rows.csv
+
+  wrangle:
+    needs: [query]
+    run: >
+      python:latest
+        analysis/wrangle.py
+    outputs:
+      moderately_sensitive:
+        results: output/appointment_id_processed.csv
