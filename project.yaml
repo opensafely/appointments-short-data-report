@@ -16,8 +16,7 @@ actions:
   wrangle_distinct_values:
     needs: [query_distinct_values]
     run: >
-      python:latest
-        analysis/distinct_values/wrangle.py
+      python:latest python -m analysis.distinct_values.wrangle
     outputs:
       moderately_sensitive:
         results: output/distinct_values/results.csv
