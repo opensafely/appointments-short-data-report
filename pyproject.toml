@@ -15,7 +15,7 @@ exclude = '''
 
 [tool.coverage.run]
 branch = true
-omit = [".venv/*"]
+omit = [".venv/*", "analysis/date_range/wrangle.py"]
 
 [tool.coverage.report]
 fail_under = 100

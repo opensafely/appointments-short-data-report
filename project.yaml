@@ -21,3 +21,20 @@ actions:
     outputs:
       moderately_sensitive:
         results: output/appointment_id_processed.csv
+
+  query_date_range:
+    run: >
+      sqlrunner:latest
+        --output output/date_range/rows.csv
+        analysis/date_range/query.sql
+    outputs:
+      highly_sensitive:
+        rows: output/date_range/rows.csv
+
+  wrangle_date_range:
+    needs: [query_date_range]
+    run: >
+      python:latest python -m analysis.date_range.wrangle
+    outputs:
+      moderately_sensitive:
+        results: output/date_range/results.csv
