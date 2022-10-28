@@ -1,0 +1,2 @@
+max_booked_date,min_booked_date,max_start_date,min_start_date,max_arrived_date,min_arrived_date,max_end_date,min_end_date,max_finished_date,min_finished_date,max_seen_date,min_seen_date
+1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00,1900-01-01 00:00:00
