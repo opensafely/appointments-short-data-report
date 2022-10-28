@@ -4,23 +4,23 @@ expectations:
   population_size: 1000
 
 actions:
-  query:
+  query_distinct_values:
     run: >
       sqlrunner:latest
-        --output output/rows.csv
-        analysis/query.sql
+        --output output/distinct_values/rows.csv
+        analysis/distinct_values/query.sql
     outputs:
       highly_sensitive:
-        rows: output/rows.csv
+        rows: output/distinct_values/rows.csv
 
-  wrangle:
-    needs: [query]
+  wrangle_distinct_values:
+    needs: [query_distinct_values]
     run: >
       python:latest
-        analysis/wrangle.py
+        analysis/distinct_values/wrangle.py
     outputs:
       moderately_sensitive:
-        results: output/appointment_id_processed.csv
+        results: output/distinct_values/results.csv
 
   query_date_range:
     run: >

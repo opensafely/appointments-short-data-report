@@ -1,6 +1,6 @@
 import pytest
 
-from analysis import wrangle
+from analysis.distinct_values import wrangle
 
 
 @pytest.mark.parametrize("value,rounded_value", [(6, 0), (7, 7)])

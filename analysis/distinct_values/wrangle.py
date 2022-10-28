@@ -3,7 +3,7 @@ import functools
 import pathlib
 
 
-OUTPUT_DIR = pathlib.Path("output")
+OUTPUT_DIR = pathlib.Path("output/distinct_values")
 MULTIPLE = 7
 
 open_csv = functools.partial(open, newline="", encoding="utf-8")
@@ -28,7 +28,7 @@ def main():  # pragma: nocover
     num_distinct_values_rounded = round_to_multiple(num_distinct_values)
     num_values_rounded = round_to_multiple(num_values)
 
-    with open_csv(OUTPUT_DIR / "appointment_id_processed.csv", "w") as f:
+    with open_csv(OUTPUT_DIR / "results.csv", "w") as f:
         writer = csv.writer(f)
         writer.writerow(
             [
