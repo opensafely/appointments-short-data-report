@@ -19,8 +19,8 @@ def main():
     num_values = int(row["num_values"])
 
     is_appointment_id_a_pk = num_distinct_values == num_values
-    num_distinct_values_rounded = utils.round_to_multiple(num_distinct_values)
-    num_values_rounded = utils.round_to_multiple(num_values)
+    num_distinct_values_rounded = utils.round_to_seven(num_distinct_values)
+    num_values_rounded = utils.round_to_seven(num_values)
 
     with open_csv(ACTION_OUTPUT_DIR / "results.csv", "w") as f:
         writer = csv.writer(f)
