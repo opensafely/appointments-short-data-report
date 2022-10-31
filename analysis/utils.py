@@ -8,3 +8,6 @@ def round_to_multiple(value, multiple):
 
 
 round_to_seven = functools.partial(round_to_multiple, multiple=7)
+
+
+open_csv = functools.partial(open, newline="", encoding="utf-8")
