@@ -1,0 +1,5 @@
+column_name,year,month,num_rows
+BookedDate,2022,1,1
+BookedDate,2022,2,1
+StartDate,2022,1,1
+StartDate,2022,2,1
