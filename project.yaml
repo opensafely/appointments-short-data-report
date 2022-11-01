@@ -54,3 +54,30 @@ actions:
     outputs:
       moderately_sensitive:
         results: output/num_rows_by_month/results.csv
+
+  make_html_reports:
+    # --execute
+    #   execute notebooks before converting them to HTML reports
+    # --no-input
+    #   exclude input cells and output prompts from HTML reports
+    # --to=html
+    #   convert notebooks to HTML reports (not e.g. to PDF reports)
+    # --template basic
+    #   use the basic (unstyled) template for HTML reports
+    # --output-dir=output/reports
+    #   write HTML reports to the `output/reports` directory
+    run: >
+      python:latest jupyter nbconvert
+        --execute
+        --no-input
+        --to=html
+        --template basic
+        --output-dir=output/reports
+        analysis/reports/*.ipynb
+    needs:
+      - wrangle_distinct_values
+      - wrangle_date_range
+      - wrangle_num_rows_by_month
+    outputs:
+      moderately_sensitive:
+        reports: output/reports/*.html
