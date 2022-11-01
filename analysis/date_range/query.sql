@@ -1,14 +1,23 @@
-SELECT
-    MAX(BookedDate) AS max_booked_date,
-    MIN(BookedDate) AS min_booked_date,
-    MAX(StartDate) AS max_start_date,
-    MIN(StartDate) AS min_start_date,
-    MAX(ArrivedDate) AS max_arrived_date,
-    MIN(ArrivedDate) AS min_arrived_date,
-    MAX(EndDate) AS max_end_date,
-    MIN(EndDate) AS min_end_date,
-    MAX(FinishedDate) AS max_finished_date,
-    MIN(FinishedDate) AS min_finished_date,
-    MAX(SeenDate) AS max_seen_date,
-    MIN(SeenDate) AS min_seen_date
-FROM Appointment;
+SELECT 'BookedDate' AS column_name
+SELECT MAX(BookedDate) AS max_date
+SELECT MIN(BookedDate) AS min_date
+UNION ALL
+SELECT 'StartDate' AS column_name
+SELECT MAX(StartDate) AS max_date
+SELECT MIN(StartDate) AS min_date
+UNION ALL
+SELECT 'ArrivedDate' AS column_name
+SELECT MAX(ArrivedDate) AS max_date
+SELECT MIN(ArrivedDate) AS min_date
+UNION ALL
+SELECT 'EndDate' AS column_name
+SELECT MAX(EndDate) AS max_date
+SELECT MIN(EndDate) AS min_date
+UNION ALL
+SELECT 'FinishedDate' AS column_name
+SELECT MAX(FinishedDate) AS max_date
+SELECT MIN(FinishedDate) AS min_date
+UNION ALL
+SELECT 'SeenDate' AS column_name
+SELECT MAX(SeenDate) AS max_date
+SELECT MIN(SeenDate) AS min_date
