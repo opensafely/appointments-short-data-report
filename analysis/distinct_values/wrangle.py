@@ -28,6 +28,10 @@ def main():
                 "num_values_rounded",
             ]
         )
+        if (num_distinct_values_rounded == 0) or (num_values_rounded == 0):
+            # If we write this row, then we can infer that the unrounded values are
+            # between 1 and 6.
+            return
         writer.writerow(
             [
                 is_appointment_id_a_pk,
