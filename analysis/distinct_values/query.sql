@@ -1,5 +1,7 @@
 SELECT
-    COUNT(DISTINCT Appointment_ID) AS num_distinct_values,
-    COUNT(Appointment_ID) AS num_values
-FROM
-    Appointment;
+    (SELECT COUNT(*) FROM (
+        SELECT DISTINCT Appointment_ID, Organisation_ID FROM Appointment) AS t -- noqa:L016,L036
+    ) AS num_distinct_values,
+    (SELECT COUNT(*) FROM (
+        SELECT Appointment_ID FROM Appointment) AS t
+    ) AS num_values
