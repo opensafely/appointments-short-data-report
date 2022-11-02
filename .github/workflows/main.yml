@@ -19,6 +19,13 @@ jobs:
       - name: Check formatting, linting and import sorting
         run: just check
 
+  ensure-clean-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Ensure clean notebooks
+        uses: ResearchSoftwareActions/EnsureCleanNotebooksAction@1.1
+
   test:
     runs-on: ubuntu-latest
     steps:

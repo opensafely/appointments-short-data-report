@@ -1,6 +1,7 @@
 *~
 .coverage
 .DS_Store
+.ipynb_checkpoints/
 .python-version
 .Rhistory
 .Rproj.user/
