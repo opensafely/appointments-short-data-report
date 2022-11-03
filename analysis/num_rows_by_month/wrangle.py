@@ -24,10 +24,6 @@ def main():
 
             date = utils.isoformat_date(year, month)
             rounded_num_rows = utils.round_to_seven(num_rows)
-            if rounded_num_rows == 0:
-                # If we write this row, then we can infer that the unrounded value is
-                # between 1 and 6.
-                continue
 
             writer.writerow([column_name, date, rounded_num_rows])
 
