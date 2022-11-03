@@ -15,7 +15,7 @@ def main():
     num_distinct_values = int(row["num_distinct_values"])
     num_values = int(row["num_values"])
 
-    is_appointment_id_a_pk = num_distinct_values == num_values
+    is_pk = num_distinct_values == num_values
     num_distinct_values_rounded = utils.round_to_seven(num_distinct_values)
     num_values_rounded = utils.round_to_seven(num_values)
 
@@ -23,7 +23,7 @@ def main():
         writer = csv.writer(f)
         writer.writerow(
             [
-                "is_appointment_id_a_pk",
+                "is_pk",
                 "num_distinct_values_rounded",
                 "num_values_rounded",
             ]
@@ -34,7 +34,7 @@ def main():
             return
         writer.writerow(
             [
-                is_appointment_id_a_pk,
+                is_pk,
                 num_distinct_values_rounded,
                 num_values_rounded,
             ]
