@@ -55,6 +55,23 @@ actions:
       moderately_sensitive:
         results: output/num_rows_by_month/results.csv
 
+  query_lead_time:
+    run: >
+      sqlrunner:latest
+        --output output/lead_time/rows.csv
+        analysis/lead_time/query.sql
+    outputs:
+      highly_sensitive:
+        rows: output/lead_time/rows.csv
+
+  wrangle_lead_time:
+    needs: [query_lead_time]
+    run: >
+      python:latest python -m analysis.lead_time.wrangle
+    outputs:
+      moderately_sensitive:
+        results: output/lead_time/results.csv
+
   make_html_reports:
     # --execute
     #   execute notebooks before converting them to HTML reports
