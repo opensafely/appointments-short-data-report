@@ -2,8 +2,8 @@ import functools
 
 
 def round_to_multiple(value, multiple):
-    if value < multiple:
-        return 0
+    if value <= multiple:
+        return multiple
     return int(multiple * round(value / multiple, 0))
 
 
