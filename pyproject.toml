@@ -19,7 +19,6 @@ omit = [
     ".venv/*",
     "analysis/date_range/wrangle.py",
     "analysis/distinct_values/wrangle.py",
-    "analysis/lead_time/wrangle.py",
 ]
 
 [tool.coverage.report]

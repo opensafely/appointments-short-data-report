@@ -67,10 +67,13 @@ actions:
       highly_sensitive:
         rows: output/lead_time/rows.csv
 
-  wrangle_lead_time:
+  round_lead_time:
     needs: [query_lead_time]
     run: >
-      python:latest python -m analysis.lead_time.wrangle
+      python:latest python -m analysis.actions.round
+        --output output/lead_time/results.csv
+        output/lead_time/rows.csv
+        --column-names frequency
     outputs:
       moderately_sensitive:
         results: output/lead_time/results.csv
@@ -98,7 +101,7 @@ actions:
       - wrangle_distinct_values
       - wrangle_date_range
       - round_num_rows_by_month
-      - wrangle_lead_time
+      - round_lead_time
     outputs:
       moderately_sensitive:
         reports: output/reports/*.html
