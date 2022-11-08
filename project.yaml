@@ -95,6 +95,7 @@ actions:
       - wrangle_distinct_values
       - wrangle_date_range
       - wrangle_num_rows_by_month
+      - wrangle_lead_time
     outputs:
       moderately_sensitive:
         reports: output/reports/*.html
