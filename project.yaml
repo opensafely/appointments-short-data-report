@@ -13,10 +13,13 @@ actions:
       highly_sensitive:
         rows: output/distinct_values/rows.csv
 
-  wrangle_distinct_values:
+  round_distinct_values:
     needs: [query_distinct_values]
     run: >
-      python:latest python -m analysis.distinct_values.wrangle
+      python:latest python -m analysis.actions.round
+        --output output/distinct_values/results.csv
+        output/distinct_values/rows.csv
+        --column-names num_distinct_values num_values
     outputs:
       moderately_sensitive:
         results: output/distinct_values/results.csv
@@ -98,7 +101,7 @@ actions:
         --output-dir=output/reports
         analysis/reports/*.ipynb
     needs:
-      - wrangle_distinct_values
+      - round_distinct_values
       - wrangle_date_range
       - round_num_rows_by_month
       - round_lead_time

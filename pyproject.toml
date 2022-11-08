@@ -18,7 +18,6 @@ branch = true
 omit = [
     ".venv/*",
     "analysis/date_range/wrangle.py",
-    "analysis/distinct_values/wrangle.py",
 ]
 
 [tool.coverage.report]
