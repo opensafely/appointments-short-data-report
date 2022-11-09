@@ -1,4 +1,4 @@
-column_name,max_date,min_date
+column_name,min_date,max_date
 BookedDate,1900-01-01,1900-01-01
 StartDate,1900-01-01,1900-01-01
 ArrivedDate,1900-01-01,1900-01-01
