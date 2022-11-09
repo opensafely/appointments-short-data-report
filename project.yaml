@@ -37,6 +37,8 @@ actions:
     needs: [query_date_range]
     run: >
       python:latest python -m analysis.actions.copy
+        --output output/date_range/results.csv
+        output/date_range/rows.csv
     outputs:
       moderately_sensitive:
         results: output/date_range/results.csv
