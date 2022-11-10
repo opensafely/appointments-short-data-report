@@ -33,10 +33,12 @@ actions:
       highly_sensitive:
         rows: output/date_range/rows.csv
 
-  wrangle_date_range:
+  copy_date_range:
     needs: [query_date_range]
     run: >
-      python:latest python -m analysis.date_range.wrangle
+      python:latest python -m analysis.actions.copy
+        --output output/date_range/results.csv
+        output/date_range/rows.csv
     outputs:
       moderately_sensitive:
         results: output/date_range/results.csv
@@ -102,7 +104,7 @@ actions:
         analysis/reports/*.ipynb
     needs:
       - round_distinct_values
-      - wrangle_date_range
+      - copy_date_range
       - round_num_rows_by_month
       - round_lead_time
     outputs:
