@@ -1,7 +1,14 @@
 SELECT
-    (SELECT COUNT(*) FROM (
-        SELECT DISTINCT Appointment_ID, Organisation_ID, Patient_ID FROM Appointment) AS t -- noqa:L016,L036
-    ) AS num_distinct_values,
-    (SELECT COUNT(*) FROM (
-        SELECT Appointment_ID FROM Appointment) AS t
-    ) AS num_values
+    t.Organisation_ID,
+    COUNT(*) AS num_distinct_values,
+    SUM(t.num_values) AS num_values
+FROM (
+    SELECT
+        Organisation_ID,
+        Appointment_ID,
+        COUNT(*) AS num_values
+    FROM Appointment
+    GROUP BY Organisation_ID, Appointment_ID
+) AS t
+GROUP BY t.Organisation_ID
+ORDER BY t.Organisation_ID

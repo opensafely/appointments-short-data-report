@@ -1,2 +1,3 @@
-num_distinct_values,num_values
-1,1
+Organisation_ID,num_distinct_values,num_values
+1,1,1
+2,1,2
