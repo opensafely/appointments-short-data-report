@@ -24,6 +24,25 @@ actions:
       moderately_sensitive:
         results: output/distinct_values/results.csv
 
+  query_status:
+    run: >
+      sqlrunner:latest
+        --output output/status/rows.csv
+        analysis/status/query.sql
+    outputs:
+      highly_sensitive:
+        rows: output/status/rows.csv
+
+  copy_status:
+    needs: [query_status]
+    run: >
+      python:latest python -m analysis.actions.copy
+        --output output/status/results.csv
+        output/status/rows.csv
+    outputs:
+      moderately_sensitive:
+        results: output/status/results.csv
+
   query_date_range:
     run: >
       sqlrunner:latest
