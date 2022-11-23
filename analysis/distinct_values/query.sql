@@ -22,3 +22,4 @@ FROM (
     GROUP BY t0.Organisation_ID, t0.Appointment_ID, t0.booked_date
 ) AS t1
 GROUP BY t1.Organisation_ID, t1.booked_date
+ORDER BY t1.Organisation_ID, t1.booked_date
