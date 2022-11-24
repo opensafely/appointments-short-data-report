@@ -113,6 +113,8 @@ actions:
     #   use the basic (unstyled) template for HTML reports
     # --output-dir=output/reports
     #   write HTML reports to the `output/reports` directory
+    # --ExecutePreprocessor.timeout=-1
+    #   disable the time to wait (in seconds) for output from executions
     run: >
       python:latest jupyter nbconvert
         --execute
@@ -120,6 +122,7 @@ actions:
         --to=html
         --template basic
         --output-dir=output/reports
+        --ExecutePreprocessor.timeout=-1
         analysis/reports/*.ipynb
     needs:
       - round_distinct_values
