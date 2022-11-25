@@ -13,16 +13,24 @@ actions:
       highly_sensitive:
         rows: output/distinct_values/rows.csv
 
-  round_distinct_values:
+  generate_prop_distinct_values_by_organisation_id_measure:
     needs: [query_distinct_values]
     run: >
-      python:latest python -m analysis.actions.round
-        --output output/distinct_values/results.csv
-        output/distinct_values/rows.csv
-        --column-names num_distinct_values num_values
+      python:latest python -m analysis.distinct_values.generate_measure
+    outputs:
+      highly_sensitive:
+        measure: output/distinct_values/measure_prop_distinct_values_by_organisation_id.csv
+
+  generate_distinct_values_deciles_charts:
+    needs: [generate_prop_distinct_values_by_organisation_id_measure]
+    run: >
+      deciles-charts:v0.0.33
+        --input-files output/distinct_values/measure_*.csv
+        --output-dir output/distinct_values
     outputs:
       moderately_sensitive:
-        results: output/distinct_values/results.csv
+        deciles_charts: output/distinct_values/deciles_chart_*.png
+        deciles_tables: output/distinct_values/deciles_table_*.csv
 
   query_status:
     run: >
@@ -125,7 +133,6 @@ actions:
         --ExecutePreprocessor.timeout=-1
         analysis/reports/*.ipynb
     needs:
-      - round_distinct_values
       - copy_date_range
       - round_num_rows_by_month
       - round_lead_time
