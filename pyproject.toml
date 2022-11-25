@@ -17,6 +17,7 @@ exclude = '''
 branch = true
 omit = [
     ".venv/*",
+    "analysis/distinct_values/generate_measure.py",
 ]
 
 [tool.coverage.report]
