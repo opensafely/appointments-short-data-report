@@ -41,12 +41,13 @@ actions:
       highly_sensitive:
         rows: output/status/rows.csv
 
-  copy_status:
+  round_status:
     needs: [query_status]
     run: >
-      python:latest python -m analysis.actions.copy
+      python:latest python -m analysis.actions.round
         --output output/status/results.csv
         output/status/rows.csv
+        --column-names num_values
     outputs:
       moderately_sensitive:
         results: output/status/results.csv
