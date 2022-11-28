@@ -134,6 +134,7 @@ actions:
         --ExecutePreprocessor.timeout=-1
         analysis/reports/*.ipynb
     needs:
+      - generate_distinct_values_deciles_charts
       - copy_date_range
       - round_num_rows_by_month
       - round_lead_time
