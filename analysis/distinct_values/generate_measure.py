@@ -5,7 +5,7 @@ from .. import OUTPUT_DIR, utils
 
 def main():
     measure_id = "prop_distinct_values_by_organisation_id"
-    p_in = OUTPUT_DIR / "distinct_values" / "rows.csv"
+    p_in = OUTPUT_DIR / "distinct_values" / "reindexed_rows.csv"
     p_out = OUTPUT_DIR / "distinct_values" / f"measure_{measure_id}.csv"
     with utils.open_csv(p_in) as f_in, utils.open_csv(p_out, "w") as f_out:
         reader = csv.reader(f_in)

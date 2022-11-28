@@ -13,8 +13,20 @@ actions:
       highly_sensitive:
         rows: output/distinct_values/rows.csv
 
-  generate_prop_distinct_values_by_organisation_id_measure:
+  reindex_distinct_values:
     needs: [query_distinct_values]
+    run: >
+      python:latest python -m analysis.actions.reindex
+        --output output/distinct_values/reindexed_rows.csv
+        --date-column-name booked_date
+        output/distinct_values/rows.csv
+        --group-by-column-names Organisation_ID
+    outputs:
+      highly_sensitive:
+        rows: output/distinct_values/reindexed_rows.csv
+
+  generate_prop_distinct_values_by_organisation_id_measure:
+    needs: [reindex_distinct_values]
     run: >
       python:latest python -m analysis.distinct_values.generate_measure
     outputs:
