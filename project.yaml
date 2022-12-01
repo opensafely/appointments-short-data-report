@@ -147,6 +147,7 @@ actions:
         analysis/reports/*.ipynb
     needs:
       - generate_distinct_values_deciles_charts
+      - round_status
       - copy_date_range
       - round_num_rows_by_month
       - round_lead_time

@@ -10,10 +10,11 @@ FROM (
     GROUP BY Status
 ) AS t1
 LEFT OUTER JOIN ( -- noqa: L042
-    SELECT
-        Code,
+    SELECT -- noqa: L034
+        CAST(Code AS INT) AS Code,
         Description
     FROM DataDictionary
     WHERE [Table] = 'Appointment'
 ) AS t2
 ON t1.Status = t2.Code
+ORDER BY t1.Status
