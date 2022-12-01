@@ -17,3 +17,4 @@ LEFT OUTER JOIN ( -- noqa: L042
     WHERE [Table] = 'Appointment'
 ) AS t2
 ON t1.Status = t2.Code
+ORDER BY t1.Status
