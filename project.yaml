@@ -39,6 +39,8 @@ actions:
       deciles-charts:v0.0.33
         --input-files output/distinct_values/measure_*.csv
         --output-dir output/distinct_values
+    config:
+      show_outer_percentiles: true
     outputs:
       moderately_sensitive:
         deciles_charts: output/distinct_values/deciles_chart_*.png
