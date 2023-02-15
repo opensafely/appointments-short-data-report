@@ -36,3 +36,6 @@ skip_glob = [".direnv", "venv", ".venv"]
 [tool.sqlfluff.core]
 dialect = "tsql"
 exclude_rules = "L014,L065"
+
+[tool.sqlfluff.rules]
+max_line_length = 88
