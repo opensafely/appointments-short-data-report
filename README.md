@@ -1,6 +1,6 @@
 # appointments-short-data-report
 
-[View on OpenSAFELY](https://jobs.opensafely.org/repos/https%3A%2F%2Fgithub.com%2Fopensafely%2Fappointments-short-data-report)
+[View on OpenSAFELY](https://jobs.opensafely.org/repo/https%253A%252F%252Fgithub.com%252Fopensafely%252Fappointments-short-data-report)
 
 Details of the purpose and any published outputs from this project can be found at the link above.
 
