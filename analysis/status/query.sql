@@ -5,7 +5,10 @@ SELECT
 FROM (
     SELECT
         Status,
-        COUNT(Appointment_ID) AS num_values
+        -- WARNING: There are duplicate rows in the Appointment table, so we add
+        -- DISTINCT to remove them from this query. When they are removed from the
+        -- Appointment table, then we will remove DISTINCT from this query.
+        COUNT(DISTINCT Appointment_ID) AS num_values
     FROM Appointment
     GROUP BY Status
 ) AS t1

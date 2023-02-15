@@ -13,7 +13,11 @@ FROM (
         -- GROUP BY is processed before SELECT, so we can't SELECT booked_date
         -- and GROUP BY it in the same query. So, we SELECT booked_date in an
         -- inner query and GROUP BY it in an outer query.
-        SELECT
+
+        -- WARNING: There are duplicate rows in the Appointment table, so we add
+        -- DISTINCT to remove them from this query. When they are removed from the
+        -- Appointment table, then we will remove DISTINCT from this query.
+        SELECT DISTINCT
             Organisation_ID,
             Appointment_ID,
             DATEFROMPARTS(YEAR(BookedDate), MONTH(BookedDate), 1) AS booked_date
