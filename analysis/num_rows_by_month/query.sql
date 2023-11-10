@@ -1,3 +1,13 @@
+WITH AppointmentWithoutTypeOneDissent
+AS (
+    SELECT
+        Appointment_ID,
+        BookedDate,
+        StartDate
+    FROM Appointment
+    WHERE Patient_ID NOT IN (SELECT Patient_ID FROM PatientsWithTypeOneDissent)
+)
+
 SELECT
     column_name,
     date,
@@ -10,7 +20,7 @@ FROM (
         Appointment_ID,
         'BookedDate' AS column_name,
         DATEFROMPARTS(YEAR(BookedDate), MONTH(BookedDate), 1) AS date -- noqa:L016,L029
-    FROM Appointment
+    FROM AppointmentWithoutTypeOneDissent
     UNION ALL
     -- WARNING: There are duplicate rows in the Appointment table, so we add
     -- DISTINCT to remove them from this query. When they are removed from the
@@ -19,7 +29,7 @@ FROM (
         Appointment_ID,
         'StartDate' AS column_name,
         DATEFROMPARTS(YEAR(StartDate), MONTH(StartDate), 1) AS date -- noqa:L029
-    FROM Appointment
+    FROM AppointmentWithoutTypeOneDissent
 ) AS t
 GROUP BY
     column_name,
