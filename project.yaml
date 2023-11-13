@@ -8,6 +8,7 @@ actions:
     run: >
       sqlrunner:latest
         --output output/distinct_values/rows.csv
+        --dummy-data-file analysis/distinct_values/dummy_data.csv
         analysis/distinct_values/query.sql
     outputs:
       highly_sensitive:
@@ -50,6 +51,7 @@ actions:
     run: >
       sqlrunner:latest
         --output output/status/rows.csv
+        --dummy-data-file analysis/status/dummy_data.csv
         analysis/status/query.sql
     outputs:
       highly_sensitive:
@@ -70,6 +72,7 @@ actions:
     run: >
       sqlrunner:latest
         --output output/date_range/rows.csv
+        --dummy-data-file analysis/date_range/dummy_data.csv
         analysis/date_range/query.sql
     outputs:
       highly_sensitive:
@@ -89,6 +92,7 @@ actions:
     run: >
       sqlrunner:latest
         --output output/num_rows_by_month/rows.csv
+        --dummy-data-file analysis/num_rows_by_month/dummy_data.csv
         analysis/num_rows_by_month/query.sql
     outputs:
       highly_sensitive:
@@ -109,6 +113,7 @@ actions:
     run: >
       sqlrunner:latest
         --output output/lead_time/rows.csv
+        --dummy-data-file analysis/lead_time/dummy_data.csv
         analysis/lead_time/query.sql
     outputs:
       highly_sensitive:
