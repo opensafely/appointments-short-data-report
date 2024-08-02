@@ -10,7 +10,7 @@ FROM (
         -- Appointment table, then we will remove DISTINCT from this query.
         COUNT(DISTINCT Appointment_ID) AS num_values
     FROM Appointment
-    WHERE Patient_ID NOT IN (SELECT Patient_ID FROM PatientsWithTypeOneDissent)
+    WHERE Patient_ID IN (SELECT Patient_ID FROM AllowedPatientsWithTypeOneDissent)
     GROUP BY Status
 ) AS t1
 LEFT OUTER JOIN ( -- noqa: L042
