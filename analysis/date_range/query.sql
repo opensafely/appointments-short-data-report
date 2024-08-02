@@ -8,7 +8,7 @@ AS (
         FinishedDate,
         SeenDate
     FROM Appointment
-    WHERE Patient_ID NOT IN (SELECT Patient_ID FROM PatientsWithTypeOneDissent)
+    WHERE Patient_ID IN (SELECT Patient_ID FROM AllowedPatientsWithTypeOneDissent)
 )
 
 SELECT

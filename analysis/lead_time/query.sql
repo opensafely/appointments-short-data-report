@@ -14,7 +14,7 @@ FROM (
             CAST(StartDate AS DATE) -- later
         ) AS lead_time_in_days
     FROM Appointment
-    WHERE Patient_ID NOT IN (SELECT Patient_ID FROM PatientsWithTypeOneDissent)
+    WHERE Patient_ID IN (SELECT Patient_ID FROM AllowedPatientsWithTypeOneDissent)
 ) AS t
 GROUP BY lead_time_in_days
 ORDER BY lead_time_in_days

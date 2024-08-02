@@ -30,7 +30,7 @@ FROM (
         -- to exclusion. For more information, see:
         -- https://github.com/opensafely/appointments-short-data-report/pull/38
         WHERE YEAR(BookedDate) <= (SELECT YEAR(GETDATE()))
-            AND Patient_ID NOT IN (SELECT Patient_ID FROM PatientsWithTypeOneDissent)
+            AND Patient_ID IN (SELECT Patient_ID FROM AllowedPatientsWithTypeOneDissent)
     ) AS t0
     GROUP BY t0.Organisation_ID, t0.Appointment_ID, t0.booked_date
 ) AS t1
